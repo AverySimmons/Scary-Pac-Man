@@ -1,0 +1,195 @@
+[gd_scene load_steps=13 format=3 uid="uid://dt1mui4n37wat"]
+
+[ext_resource type="Script" path="res://SceneManager.gd" id="1_u8srn"]
+[ext_resource type="Texture2D" uid="uid://q63uuhp0bvgm" path="res://Assets/Pac-manScreenshot.png" id="2_a5e2h"]
+[ext_resource type="AudioStream" uid="uid://bsnybnd7rlwuo" path="res://Audio/monster-bite-44538.mp3" id="3_7aj8x"]
+[ext_resource type="AudioStream" uid="uid://52xhq41a1i54" path="res://Audio/drammatic-cinematic-glitch-183848.mp3" id="4_cyxpx"]
+[ext_resource type="AudioStream" uid="uid://b54lnxtog46wm" path="res://Audio/Pacman Start Sound Effect.mp3" id="5_a1nfc"]
+[ext_resource type="AudioStream" uid="uid://c7yaenkcyhc2q" path="res://Audio/ALL PACMAN SOUND EFFECTS #SHORTS.mp3" id="6_kwtpr"]
+
+[sub_resource type="Animation" id="Animation_bn4jo"]
+resource_name = "Flicker"
+length = 6.5
+step = 0.3333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2.3331, 3.3335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StartSound:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.3331, 3.3335),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StartSound:pitch_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.3331, 3.333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.5]
+}
+
+[sub_resource type="Animation" id="Animation_hbdxe"]
+resource_name = "GameOver"
+length = 2.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0.988235, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3nfpc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Label:label_settings:font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("StartSound:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("StartSound:pitch_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_ux7hd"]
+resource_name = "Win"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Label:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_g7fc5"]
+_data = {
+"Flicker": SubResource("Animation_bn4jo"),
+"GameOver": SubResource("Animation_hbdxe"),
+"RESET": SubResource("Animation_3nfpc"),
+"Win": SubResource("Animation_ux7hd")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_bncdw"]
+font_size = 100
+font_color = Color(1, 1, 1, 0)
+
+[node name="SceneManager" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_u8srn")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -54.0
+offset_top = -29.0
+offset_right = 723.0
+offset_bottom = 932.0
+color = Color(0, 0, 0, 1)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Flicker"
+libraries = {
+"": SubResource("AnimationLibrary_g7fc5")
+}
+
+[node name="Pac-manScreenshot" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(336, 435)
+scale = Vector2(3, 3)
+texture = ExtResource("2_a5e2h")
+
+[node name="Control" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="Control"]
+offset_left = 74.0
+offset_top = 362.0
+offset_right = 598.0
+offset_bottom = 502.0
+text = "YOU WIN !!"
+label_settings = SubResource("LabelSettings_bncdw")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BiteSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_7aj8x")
+
+[node name="GlitchSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_cyxpx")
+
+[node name="StartSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_a1nfc")
+autoplay = true
+
+[node name="WinSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_kwtpr")

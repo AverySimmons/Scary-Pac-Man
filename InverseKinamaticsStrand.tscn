@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ch8345wxjy3hm"]
+
+[ext_resource type="Script" path="res://InverseKinamaticsStrand.gd" id="1_s701a"]
+
+[node name="InverseKinamaticsStrand" type="Node2D"]
+script = ExtResource("1_s701a")

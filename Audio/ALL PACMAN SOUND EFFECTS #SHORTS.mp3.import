@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c7yaenkcyhc2q"
+path="res://.godot/imported/ALL PACMAN SOUND EFFECTS #SHORTS.mp3-7e9cc6a0b43c77d2772f0311cbda16b4.mp3str"
+
+[deps]
+
+source_file="res://Audio/ALL PACMAN SOUND EFFECTS #SHORTS.mp3"
+dest_files=["res://.godot/imported/ALL PACMAN SOUND EFFECTS #SHORTS.mp3-7e9cc6a0b43c77d2772f0311cbda16b4.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

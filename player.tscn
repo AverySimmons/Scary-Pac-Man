@@ -1,0 +1,112 @@
+[gd_scene load_steps=9 format=3 uid="uid://k7xrhm62o8iu"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_spcw0"]
+[ext_resource type="Texture2D" uid="uid://v3fl1e6546qg" path="res://Assets/spritesheet (1).png" id="2_mx4r4"]
+[ext_resource type="Texture2D" uid="uid://1mjb5wyde5vw" path="res://Assets/light.png" id="3_pkpaw"]
+
+[sub_resource type="Animation" id="Animation_qldxt"]
+resource_name = "Flicker"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PointLight2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true, false, true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_88iu2"]
+resource_name = "Moving"
+length = 0.2
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1]
+}
+
+[sub_resource type="Animation" id="Animation_pg11p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PointLight2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wsj28"]
+_data = {
+"Flicker": SubResource("Animation_qldxt"),
+"Moving": SubResource("Animation_88iu2"),
+"RESET": SubResource("Animation_pg11p")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7k41u"]
+radius = 17.0294
+
+[node name="Player" type="Node2D"]
+process_mode = 1
+script = ExtResource("1_spcw0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(3, 3)
+texture = ExtResource("2_mx4r4")
+hframes = 2
+vframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "RESET"
+libraries = {
+"": SubResource("AnimationLibrary_wsj28")
+}
+
+[node name="Area2D" type="Area2D" parent="." groups=["Player"]]
+collision_layer = 2
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_7k41u")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+shadow_enabled = true
+shadow_filter_smooth = 1.0
+texture = ExtResource("3_pkpaw")
+texture_scale = 2.0
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

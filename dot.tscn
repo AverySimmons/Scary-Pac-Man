@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://xjyvidb0uqsi"]
+
+[ext_resource type="Script" path="res://dot.gd" id="1_2cf1h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vur53"]
+size = Vector2(2, 2)
+
+[node name="Dot" type="Node2D"]
+script = ExtResource("1_2cf1h")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.909804, 0.647059, 0.572549, 1)
+polygon = PackedVector2Array(-2, -2, 2, -2, 2, 2, -2, 2)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_vur53")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

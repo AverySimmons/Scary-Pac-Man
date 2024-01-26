@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b54lnxtog46wm"
+path="res://.godot/imported/Pacman Start Sound Effect.mp3-4794c22dcd666f745f34aa4e84e51c09.mp3str"
+
+[deps]
+
+source_file="res://Audio/Pacman Start Sound Effect.mp3"
+dest_files=["res://.godot/imported/Pacman Start Sound Effect.mp3-4794c22dcd666f745f34aa4e84e51c09.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
