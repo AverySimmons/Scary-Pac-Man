@@ -26,13 +26,13 @@ The main way this game builds tension is through its sound. When the game is fir
 
 
 ### Code Breakdown:
-- &nbsp;&nbsp;&nbsp;&nbsp;**Level:**
+- &nbsp;&nbsp;&nbsp;&nbsp;**Level:**  
 This scene holds the tilemap responsible for generating the player and monsters movement, as well as the light occlusion for the player's light.
 
-- &nbsp;&nbsp;&nbsp;&nbsp;**Player:**
+- &nbsp;&nbsp;&nbsp;&nbsp;**Player:**  
 The player scene contains the player sprite and collision as well as the movement logic and the player's light.
 
-- &nbsp;&nbsp;&nbsp;&nbsp;**Monster:**
+- &nbsp;&nbsp;&nbsp;&nbsp;**Monster:**  
 The monster scene holds the logic for the enemy AI and pathfinding as well as the monster's primary model and tentacle placement logic.
 
 - &nbsp;&nbsp;&nbsp;&nbsp;**InverseKinamaticsStrand:**
