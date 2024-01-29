@@ -35,5 +35,5 @@ The player scene contains the player sprite and collision as well as the movemen
 - &nbsp;&nbsp;&nbsp;&nbsp;**Monster:**  
 The monster scene holds the logic for the enemy AI and pathfinding as well as the monster's primary model and tentacle placement logic.
 
-- &nbsp;&nbsp;&nbsp;&nbsp;**InverseKinamaticsStrand:**
+- &nbsp;&nbsp;&nbsp;&nbsp;**InverseKinamaticsStrand:**  
 This scene possesses the logic for controlling the monster's tentacles. Given a point to move to, the strand will work backward to move its endpoint as close as possible.
